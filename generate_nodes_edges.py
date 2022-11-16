@@ -21,8 +21,8 @@ def getEdges(obj):
         for node in children:
             edges.append({
                 'id' : "E"+id,
-                'source' : obj[key]['id'],
-                'target' : node
+                'source' : "N"+obj[key]['id'],
+                'target' : "N"+node
             })
     return edges
 
