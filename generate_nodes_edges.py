@@ -14,16 +14,18 @@ def getNodes(obj):
     return nodes
 
 def getEdges(obj):
+    i = 0
     edges = []
     for key in obj:
         id = obj[key]['id']
         children = obj[key]["children"]
         for node in children:
             edges.append({
-                'id' : "E"+id,
+                'id' : "E"+ str(i),
                 'source' : "N"+obj[key]['id'],
                 'target' : "N"+node
             })
+            i=i+1
     return edges
 
 obj = fileToJson('graph.json')
