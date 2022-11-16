@@ -8,7 +8,7 @@ def getNodes(obj):
     nodes = []
     for key in obj:
         nodes.append({
-            'id' : obj[key]["id"],
+            'id' : "N"+obj[key]["id"],
             'label' : obj[key]["data"]["name"].split('.')[1].strip()
         })
     return nodes
@@ -20,7 +20,7 @@ def getEdges(obj):
         children = obj[key]["children"]
         for node in children:
             edges.append({
-                'id' : id,
+                'id' : "E"+id,
                 'source' : obj[key]['id'],
                 'target' : node
             })
@@ -28,11 +28,11 @@ def getEdges(obj):
 
 obj = fileToJson('graph.json')
 
-with open('nodes.js', 'w') as nodes:
+with open('nodes.json', 'w') as nodes:
     json.dump(getNodes(obj), nodes, indent=4)
 
 
-with open('edges.js', 'w') as edges:
+with open('edges.json', 'w') as edges:
     json.dump(getEdges(obj), edges, indent=4)
 
 
